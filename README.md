@@ -20,6 +20,23 @@ A Python-based web server for displaying sensor data from ESP32 devices.
    ```
 3. Access the dashboard at `http://localhost:5050`
 
+## Accessing the Server on Your LAN
+
+1. Find your Mac's LAN IP address:
+   ```bash
+   ifconfig | grep "inet "
+   ```
+2. Access the dashboard from another device on the same network:
+   ```
+   http://<your-lan-ip>:5050
+   ```
+3. Post data to the server:
+   ```bash
+   curl -X POST -H "Content-Type: application/json" \
+        -d '{"service_name": "test_service", "sensor_name": "temp_sensor", "sensor_value": 25.5}' \
+        http://<your-lan-ip>:5050/data
+   ```
+
 ## Posting Data
 
 Use `curl` or any HTTP client to send POST requests:
